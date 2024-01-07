@@ -22,7 +22,7 @@ const LoginCard = () => {
     <>
       <Card
         sx={{
-          maxWidth: 600,
+          maxWidth: 1000,
           minWidth: 400,
           display: 'flex',
           flexDirection: 'column',
