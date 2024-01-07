@@ -1,8 +1,7 @@
 import { Card, CardContent, CardHeader, Box, Tabs, Tab } from '@mui/material';
 import { SyntheticEvent, useState } from 'react';
-import RegisterUser from './registerUser';
 import LoginUser from './loginUser';
-import TabPanel from './TabPanel';
+import TabPanel from './tabPanel';
 
 function a11yProps(index: number) {
   return {
@@ -12,9 +11,9 @@ function a11yProps(index: number) {
 }
 
 const LoginCard = () => {
-  const [isRegistering, setisRegistering] = useState(0);
+  const [isRegistering, setisRegistering] = useState<0 | 1>(0);
 
-  const handleChange = (event: SyntheticEvent, newValue: number) => {
+  const handleChange = (_event: SyntheticEvent, newValue: 0 | 1) => {
     setisRegistering(newValue);
   };
 
@@ -22,12 +21,12 @@ const LoginCard = () => {
     <>
       <Card
         sx={{
-          maxWidth: 1000,
-          minWidth: 400,
+          maxWidth: '95%',
+          minWidth: '50%',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          background: '#ffb6c1',
+          background: '#fce4ec',
         }}
       >
         <CardHeader
@@ -35,21 +34,21 @@ const LoginCard = () => {
           subheader="Register a new user if you need"
         />
         <CardContent>
-          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+          <Box>
             <Tabs
               value={isRegistering}
               onChange={handleChange}
-              aria-label="basic tabs example"
+              aria-label="Tabs for login or registration"
             >
               <Tab label="Login" {...a11yProps(0)} />
               <Tab label="Register" {...a11yProps(1)} />
             </Tabs>
           </Box>
           <TabPanel value={isRegistering} index={0}>
-            <LoginUser />
+            <LoginUser newUser={false} />
           </TabPanel>
           <TabPanel value={isRegistering} index={1}>
-            <RegisterUser />
+            <LoginUser newUser={true} />
           </TabPanel>
         </CardContent>
       </Card>
